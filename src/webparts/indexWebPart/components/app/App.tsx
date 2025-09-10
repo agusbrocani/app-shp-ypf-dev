@@ -1,17 +1,22 @@
-import { Routes, Route } from 'react-router-dom';
-import { Roles } from '../../../../core/utils/Constants';
-import * as React from 'react';
-import Home from '../home/Home';
-import ProtectedRoute from '../protectedRoute/ProtectedRoute';
-import AdminPage from '../adminPage/AdminPage';
-import Forbidden from '../forbidden/Forbidden';
+import * as React from "react";
+import { Routes, Route } from "react-router-dom";
+import { Roles } from "../../../../core/utils/Constants";
+import Home from "../home/Home";
+import ProtectedRoute from "../protectedRoute/ProtectedRoute";
+import AdminPage from "../adminPage/AdminPage";
+import Forbidden from "../forbidden/Forbidden";
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 
-const mockUserGroups = ['ADMINISTRADORES']; // Se puede cargar con contexto o API
+interface IAppProps {
+    context: WebPartContext;
+}
 
-const App: React.FC = () => {
+const mockUserGroups = ["ADMINISTRADORES"];
+
+const App: React.FC<IAppProps> = ({ context }) => {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home context={context} />} />
             <Route path="/forbidden" element={<Forbidden />} />
             <Route
                 path="/admin"

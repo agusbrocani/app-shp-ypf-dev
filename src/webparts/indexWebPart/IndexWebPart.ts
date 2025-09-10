@@ -8,7 +8,7 @@ export interface IIndexWebPartProps { }
 
 export default class IndexWebPart extends BaseClientSideWebPart<IIndexWebPartProps> {
     public render(): void {
-        const element: React.ReactElement = React.createElement(Index, {});
+        const element: React.ReactElement = React.createElement(Index, { context: this.context });
         ReactDom.render(element, this.domElement);
 
     }

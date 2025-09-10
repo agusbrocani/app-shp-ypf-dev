@@ -113,5 +113,58 @@ Hacer una webpart desde 0
         "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/write-manifests.schema.json",
         "cdnBasePath": ""
     }
+
+8- cambiar el package-solution.json
+
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "solucion-graph-client-side-solution",
+    "id": "f82512b8-c4c2-4557-9797-fb1831ec0e32",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Tu Nombre o Empresa",
+      "websiteUrl": "https://circo.sharepoint.com",
+      "privacyUrl": "https://circo.sharepoint.com",
+      "termsOfUseUrl": "https://circo.sharepoint.com",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Solucion Graph para probar integracion con listas de SharePoint"
+      },
+      "longDescription": {
+        "default": "Solucion SPFx que consume Microsoft Graph para traer informacion de listas en SharePoint"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": [
+        "Collaboration",
+        "Content management"
+      ]
+    },
+    "features": [
+      {
+        "title": "solucion-graph Feature",
+        "description": "Feature que activa los elementos de la solucion Graph.",
+        "id": "4fd21bd4-2fe2-449b-93af-bddc5f520a41",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/solucion-graph.sppkg"
+  }
+}
 ------------------FIN------------------
 npm install react-router-dom@6.30.1 --legacy-peer-deps
+npm install @microsoft/sp-http@1.21.1 --save

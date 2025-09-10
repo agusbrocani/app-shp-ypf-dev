@@ -35,3 +35,4 @@ obj
 
 .env
 local.settings.json
+package-lock.json

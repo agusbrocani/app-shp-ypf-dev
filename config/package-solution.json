@@ -8,29 +8,38 @@
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "developer": {
-      "name": "",
-      "websiteUrl": "",
-      "privacyUrl": "",
-      "termsOfUseUrl": "",
+      "name": "Agustin Brocani",
+      "websiteUrl": "https://circo.sharepoint.com",
+      "privacyUrl": "https://circo.sharepoint.com",
+      "termsOfUseUrl": "https://circo.sharepoint.com",
       "mpnId": "Undefined-1.21.1"
     },
     "metadata": {
       "shortDescription": {
-        "default": "SolucionGraph description"
+        "default": "Solución Graph para probar integración con listas de SharePoint"
       },
       "longDescription": {
-        "default": "SolucionGraph description"
+        "default": "Solución SPFx que consume Microsoft Graph para traer información de listas en SharePoint"
       },
       "screenshotPaths": [],
       "videoUrl": "",
-      "categories": []
+      "categories": [
+        "Collaboration",
+        "Content management"
+      ]
     },
     "features": [
       {
         "title": "solucion-graph Feature",
-        "description": "The feature that activates elements of the solucion-graph solution.",
+        "description": "Feature que activa los elementos de la solución Graph.",
         "id": "4fd21bd4-2fe2-449b-93af-bddc5f520a41",
         "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
       }
     ]
   },
