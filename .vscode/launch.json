@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug workbench",
+      "name": "Debug con workbench",
       "type": "msedge",
       "request": "launch",
       "url": "https://circo.sharepoint.com/sites/SHP-YPF-DEV/_layouts/workbench.aspx",
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "name": "Debug manifest",
+      "name": "Debug con manifests",
       "type": "msedge",
       "request": "launch",
       "url": "https://circo.sharepoint.com/sites/SHP-YPF-DEV?debug=true&noredir=true&debugManifestsFile=https://localhost:4321/temp/build/manifests.js",
