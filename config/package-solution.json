@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "solucion-graph-client-side-solution",
+    "id": "f82512b8-c4c2-4557-9797-fb1831ec0e32",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "SolucionGraph description"
+      },
+      "longDescription": {
+        "default": "SolucionGraph description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "solucion-graph Feature",
+        "description": "The feature that activates elements of the solucion-graph solution.",
+        "id": "4fd21bd4-2fe2-449b-93af-bddc5f520a41",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/solucion-graph.sppkg"
+  }
+}

@@ -1,0 +1,24 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+    "id": "44444444-4444-4444-4444-444444444444",
+    "alias": "IndexWebPart",
+    "componentType": "WebPart",
+    "version": "1.0.0",
+    "manifestVersion": 2,
+    "preconfiguredEntries": [
+        {
+            "groupId": "00000000-0000-0000-0000-000000000000",
+            "group": {
+                "default": "Custom"
+            },
+            "title": {
+                "default": "Index"
+            },
+            "description": {
+                "default": "Mi primera WebPart llamada Index"
+            },
+            "officeFabricIconFontName": "Page",
+            "properties": {}
+        }
+    ]
+}

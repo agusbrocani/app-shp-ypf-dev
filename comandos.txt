@@ -1,0 +1,117 @@
+npm install -g yo gulp
+npm install -g @microsoft/generator-sharepoint
+
+// En una carpeta vacia
+yo @microsoft/sharepoint
+
+¿Qué nombre desea para la solución? → MiPrimerWebpart
+¿Qué tipo de cliente-side component desea crear? → WebPart
+¿Desea permitir que la solución se implemente en todos los sitios? → Yes
+Nombre del WebPart → MiWebPartGraph
+Framework → React
+
+gulp serve
+
+ir al archivo serve.json y poner:
+    "initialPage": "https://circo.sharepoint.com/sites/SHP-YPF-DEV/_layouts/15/workbench.aspx"
+
+Configurar package.json
+    "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "dev": "gulp serve --nobrowser && gulp clean",
+    "package": "gulp bundle --ship && gulp package-solution --ship"
+    }
+
+Hacer una webpart desde 0
+    indexWebPart/
+    ├── components/
+    │    └── Index.tsx
+    ├── IndexWebPart.ts
+    ├── IndexWebPart.manifest.json
+
+1- crear carpeta dentro de webpart => en camelCase, escribir "nombreWebPart"
+2- crear una carpeta components con un componente llamado WebPartIndex.tsx
+    import * as React from "react";
+
+    const Index: React.FC = () => {
+        return (<></>);
+    }
+
+    export default Index;
+
+3- crear archivo en pascal case NombreWebPart.ts y copiar:
+
+    // Contenedor donde se monta la APP, es equivalente al index.tsx de una app de React tradicional (ReactDOM.createRoot)
+    import * as React from 'react';
+    import * as ReactDom from 'react-dom';
+    import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+
+    import Index from './components/Index';
+
+    export interface IIndexWebPartProps { }
+
+    export default class IndexWebPart extends BaseClientSideWebPart<IIndexWebPartProps> {
+        public render(): void {
+            const element: React.ReactElement = React.createElement(Index, {});
+            ReactDom.render(element, this.domElement);
+
+        }
+
+        protected onDispose(): void {
+            ReactDom.unmountComponentAtNode(this.domElement);
+        }
+    }
+
+4- crear un archivo WebPartIndexWebPart.manifest.json y pegar
+
+    {
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+    "id": "44444444-4444-4444-4444-444444444444",   #! (Generar un GUID único para "id" para no repetir con otro webpart).
+    "alias": "WebPartIndexWebPart",
+    "componentType": "WebPart",
+    "version": "1.0.0",
+    "manifestVersion": 2,
+    "preconfiguredEntries": [
+        {
+        "groupId": "00000000-0000-0000-0000-000000000000",
+        "group": { "default": "Custom" },
+        "title": { "default": "WebPartIndex" },
+        "description": { "default": "Mi primera WebPart llamada WebPartIndex" },
+        "officeFabricIconFontName": "Page",
+        "properties": {}
+        }
+    ]
+    }
+
+5- ir al index.ts y pegar
+    export * from './webparts/indexWebPart/IndexWebPart';
+
+6- ir a config.json y pegar
+    {
+        "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+        "version": "2.0",
+        "bundles": {
+            "index-web-part": {
+            "components": [
+                {
+                "entrypoint": "./lib/webparts/indexWebPart/IndexWebPart.js",
+                "manifest": "./src/webparts/indexWebPart/IndexWebPart.manifest.json"
+                }
+            ]
+            }
+        },
+        "externals": {},
+        "localizedResources": {
+            "IndexWebPartStrings": "lib/webparts/indexWebPart/loc/{locale}.js"
+        }
+    }
+
+7- cambiar write-manifests.json por:
+    {
+        "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/write-manifests.schema.json",
+        "cdnBasePath": ""
+    }
+------------------FIN------------------
+npm install react-router-dom@6.30.1 --legacy-peer-deps
